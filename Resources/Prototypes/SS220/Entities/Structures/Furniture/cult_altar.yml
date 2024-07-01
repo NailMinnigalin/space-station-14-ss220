@@ -1,0 +1,51 @@
+﻿- type: entity
+  name: altar
+  id: CultAlter
+  parent: BaseStructure
+  description: This is works like bed, this is looks like bed. But it just yet. Now it won't heal you, that's something you can't get. No construction allowed, no sheets will fit. This bed's just an object, a twist on it.
+  components:
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.05"
+        density: 190
+        mask:
+        - TableMask
+        # SS220 Structure colision fix begin
+        layer:
+        - TableLayer
+        # SS220 Structure colision fix end
+  - type: Sprite
+    sprite: Structures/Furniture/furniture.rsi
+    state: bed
+    noRot: true
+  - type: Strap
+    position: Down
+    rotation: -90
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 2
+  - type: Transform
+    anchored: true
+    noRot: true
+  - type: Anchorable
+    flags: 0 # SS220 NewPhysicsFix
+  - type: Pullable
+  - type: Climbable # SS220 NewPhysicsFix
