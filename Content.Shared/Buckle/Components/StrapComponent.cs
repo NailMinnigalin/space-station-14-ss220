@@ -26,6 +26,12 @@ public sealed partial class StrapComponent : Component
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public EntityWhitelist? Whitelist;
 
+    [DataField("customStrapNotAcceptedMessage"), ViewVariables(VVAccess.ReadOnly)]
+    public string? CustomStrapNotAcceptedMessage;
+
+    [DataField("customStrapNotAcceptedOtherMessage"), ViewVariables(VVAccess.ReadOnly)]
+    public string? CustomStrapNotAcceptedOtherMessage;
+
     /// <summary>
     /// Entities that this strap does not accept and cannot buckle.
     /// </summary>

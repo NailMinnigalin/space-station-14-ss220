@@ -267,7 +267,13 @@ public abstract partial class SharedBuckleSystem
             !strapComp.Whitelist.IsValid(buckleUid, EntityManager) || strapComp.Blacklist?.IsValid(buckleUid, EntityManager) == true)
         {
             if (_netManager.IsServer)
-                _popup.PopupEntity(Loc.GetString("buckle-component-cannot-fit-message"), userUid, buckleUid, PopupType.Medium);
+            {
+                var message = Loc.GetString(buckleUid == userUid
+                        ? strapComp.CustomStrapNotAcceptedMessage ?? "buckle-component-already-buckled-message"
+                        : strapComp.CustomStrapNotAcceptedOtherMessage ?? "buckle-component-other-already-buckled-message",
+                    ("owner", Identity.Entity(buckleUid, EntityManager)));
+                _popup.PopupEntity(Loc.GetString(message), userUid, userUid, PopupType.Medium);
+            }
             return false;
         }
 

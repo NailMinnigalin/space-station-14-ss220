@@ -2,7 +2,7 @@
   name: altar
   id: CultAlter
   parent: BaseStructure
-  description: This is works like bed, this is looks like bed. But it just yet. Now it won't heal you, that's something you can't get. No construction allowed, no sheets will fit. This bed's just an object, a twist on it.
+  description: This is works like bed, this is looks like bed. But it just yet. Now it won't heal you, that's something you can't get. No construction allowed, no sheets will fit. This bed's just an object, a twist on it. Only cultVictim entities can be buckled on this altar's site. A special feature added, for rituals in the night.
   components:
   - type: Physics
     bodyType: Static
@@ -26,6 +26,11 @@
   - type: Strap
     position: Down
     rotation: -90
+    whitelist:
+      components:
+        - CultYoggVictim
+    customStrapNotAcceptedMessage: buckle-component-cannot-fit-altar-message
+    customStrapNotAcceptedOtherMessage: buckle-component-other-cannot-fit-altar-message
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Metallic
