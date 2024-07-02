@@ -1,6 +1,6 @@
 ﻿- type: entity
   name: altar
-  id: CultAltar
+  id: AltarCultYogg
   parent: BaseStructure
   description: This is works like bed, this is looks like bed. But it just yet. Now it won't heal you, that's something you can't get. No construction allowed, no sheets will fit. This bed's just an object, a twist on it. Only cultVictim entities can be buckled on this altar's site. A special feature added, for rituals in the night.
   components:
